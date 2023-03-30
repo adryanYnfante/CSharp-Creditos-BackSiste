@@ -1,0 +1,61 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "EntryPoints.ReactiveWeb.Dtos";
+
+package cliente;
+
+service ClienteController {
+	rpc Crear (CrearClienteRequest) returns (ClienteReply);
+
+	rpc Actualizar (ActualizarClienteRequest) returns (ClienteReply);
+
+	rpc Obtener (Cedula) returns (ClienteReply);
+}
+
+message CrearClienteRequest {
+	string Nombre = 1;
+
+	string Apellidos = 2;
+
+	string NumeroDeCedula = 3;
+
+	string Correo = 4;
+
+	string NumeroDeTelefono = 5;
+}
+
+message Cedula {
+	string NumeroDeCedula = 1;
+}
+
+message ClienteReply {
+	bool error = 1;
+
+	string message = 2;
+
+	ClienteRequest cliente = 3;
+}
+
+ message ClienteRequest {
+	string Nombre = 1;
+
+	string Apellidos = 2;
+
+	string NumeroDeCedula = 3;
+
+	string Correo = 4;
+
+	string NumeroDeTelefono = 5;
+ }
+
+ message ActualizarClienteRequest {
+	string Nombre = 1;
+
+	string Apellidos = 2;
+
+	string Correo = 4;
+
+	string NumeroDeTelefono = 5;
+
+	Cedula Cedula = 6;
+ }
